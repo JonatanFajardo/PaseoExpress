@@ -1,0 +1,51 @@
+﻿@page "/comprobantediario"
+@using PaseoExpress.Shared.Models;
+
+<h3>Vehículos</h3>
+
+@if (_vehiculos == null)
+{
+    <p>Cargando...</p>
+}
+else
+{
+    <div class="row">
+        @foreach (var vehiculo in _vehiculos)
+        {
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img src="@vehiculo.Imagen" class="card-img-top" alt="Imagen de @vehiculo.Placa">
+                    <div class="card-body">
+                        <h5 class="card-title">Vehículo @vehiculo.IdVehiculo</h5>
+                        <p class="card-text">
+                            Año: @vehiculo.Anio<br>
+                            Placa: @vehiculo.Placa<br>
+                            Tarifa Diaria: @vehiculo.TarifaDiaria<br>
+                            Tarifa Ahorro: @vehiculo.TarifaAhorro
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+
+@code {
+    List<ObtenerVehiculosSinExistenciaHoyDto> _vehiculos;
+
+    //public async Task OnInitializedAsync()
+    //{
+    //    var vehiculos = await ComprobanteDiarioService.ObtenerVehiculosSinExistenciaHoy();
+    //    _vehiculos = vehiculos;
+    //}
+}
